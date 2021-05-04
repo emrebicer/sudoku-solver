@@ -43,7 +43,7 @@ func main() {
 		_, inputErr := fmt.Scanln(&input)
 
 		if inputErr != nil {
-			fmt.Printf("Invalid input.\n")
+			fmt.Printf(inputErr.Error())
 		} else if input == 0 {
 			break
 		} else if input > 0 && input < 10 {
@@ -117,7 +117,6 @@ func isCellValid(board [9][9]int, rowIndex int, columnIndex int) bool {
 	}
 
 	// Check if the current big square consist of the same number
-	// TODO: Check and fix this control
 	startRow := rowIndex - rowIndex%3
 	startCol := columnIndex - columnIndex%3
 	foundAtBigSquare := 0
