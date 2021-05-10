@@ -2,9 +2,6 @@ package sudoku
 
 import (
 	"fmt"
-	"os"
-	"os/exec"
-	"strconv"
 )
 
 func Loop(newBoard [9][9]int) {
@@ -26,7 +23,7 @@ func Loop(newBoard [9][9]int) {
 			for i := 0; i < 50; i++ {
 				fmt.Println()
 			}
-			printBoard(newBoard, input)
+			PrintBoard(newBoard, input)
 		} else {
 			fmt.Printf("Invalid input.\n")
 		}
