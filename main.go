@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	sudoku "github.com/emrebicer/sudoku-solver/sudoku"
+	"github.com/emrebicer/sudoku-solver/sudoku"
 )
 
 func main() {
