@@ -22,7 +22,7 @@ func SolveBoard(board [9][9]int) ([9][9]int, bool) {
 					board[i][j] = k
 					cellValid := isCellValid(board, i, j)
 					if cellValid {
-						newBoard, boardValid := solveBoard(board)
+						newBoard, boardValid := SolveBoard(board)
 						if boardValid {
 							validFlag = true
 							board = newBoard

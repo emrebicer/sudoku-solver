@@ -1,4 +1,4 @@
-module github.com/emrebicer/sudoku_solver
+module github.com/emrebicer/sudoku-solver
 
 require github.com/fatih/color v1.10.0
 
