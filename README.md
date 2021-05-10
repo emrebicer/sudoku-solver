@@ -20,7 +20,7 @@ Create a file that represents the sudoku board, use 0 for empty cells. E.g.
 700063000
 200800030
 ```
-The use the main.go to solve the sudoku
+Run main.go to solve the sudoku
 ```terminal
 go run main.go -f board.txt
 ```
