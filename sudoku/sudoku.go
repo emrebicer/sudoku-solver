@@ -2,7 +2,7 @@ package sudoku
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 
@@ -91,7 +91,7 @@ func ReadSudokuFromFile(filename string) ([9][9]int, error) {
 
 	board := [9][9]int{}
 
-	data, err := ioutil.ReadFile(filename)
+	data, err := os.ReadFile(filename)
 	if err != nil {
 		return board, err
 	}
