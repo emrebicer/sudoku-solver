@@ -45,8 +45,9 @@ func CopyBoard(dst *[9][9]int, src *[9][9]int) {
 func PrintBoard(board [9][9]int, highlight_number int) {
 
 	boardDashColor := color.FgHiMagenta
-	highlightColor := color.FgCyan
+	highlightColor := color.FgGreen
 
+	color.Set(color.FgWhite)
 	width := 37
 	third := int(width / 3)
 	for i := 0; i < width; i++ {
