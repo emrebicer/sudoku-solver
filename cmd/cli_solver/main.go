@@ -25,13 +25,13 @@ func main() {
 		panic(err)
 	}
 
-	valid := solver.SolveBoard(&board)
+	res, valid := solver.SolveBoard(board)
 
 	if !valid {
 		fmt.Printf("Could not solve...\n")
 		return
 	}
 
-	util.PrintBoard(board, 0)
-	display.Loop(board)
+	util.PrintBoard(res, 0)
+	display.Loop(res)
 }

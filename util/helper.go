@@ -20,9 +20,9 @@ func ReadSudokuFromFile(filename string) ([9][9]int, error) {
 
 	lines := strings.Split(string(data), "\n")
 
-	for i := 0; i < 9; i++ {
+	for i := range 9 {
 		currentLine := lines[i]
-		for j := 0; j < 9; j++ {
+		for j := range 9 {
 			currentNum, err := strconv.Atoi(string(currentLine[j]))
 			if err != nil {
 				return board, err
@@ -34,14 +34,6 @@ func ReadSudokuFromFile(filename string) ([9][9]int, error) {
 	return board, nil
 }
 
-func CopyBoard(dst *[9][9]int, src *[9][9]int) {
-	for i := 0; i < 9; i++ {
-		for j := 0; j < 9; j++ {
-			dst[i][j] = src[i][j]
-		}
-	}
-}
-
 func PrintBoard(board [9][9]int, highlight_number int) {
 
 	boardDashColor := color.FgHiMagenta
@@ -50,7 +42,7 @@ func PrintBoard(board [9][9]int, highlight_number int) {
 	color.Set(color.FgWhite)
 	width := 37
 	third := int(width / 3)
-	for i := 0; i < width; i++ {
+	for i := range width {
 		if i == 0 || i == width-1 || i%third == 0 {
 			fmt.Printf("+")
 		} else {
@@ -59,9 +51,9 @@ func PrintBoard(board [9][9]int, highlight_number int) {
 	}
 	fmt.Println()
 
-	for i := 0; i < 9; i++ {
+	for i := range 9 {
 		fmt.Printf("|")
-		for j := 0; j < 9; j++ {
+		for j := range 9 {
 			currentNumber := board[i][j]
 			if currentNumber == highlight_number {
 				color.Set(highlightColor)
@@ -79,7 +71,7 @@ func PrintBoard(board [9][9]int, highlight_number int) {
 			}
 		}
 		fmt.Println()
-		for j := 0; j < width; j++ {
+		for j := range width {
 			if ((i+1)%3 == 0) && (j == 0 || j == width-1 || j%third == 0) {
 				fmt.Printf("+")
 			} else {
