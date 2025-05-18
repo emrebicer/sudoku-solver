@@ -1,12 +1,15 @@
+//go:build linux
 // +build linux
 
-package sudoku
+package display
 
 import (
 	"fmt"
 	"os"
 	"os/exec"
 	"strconv"
+
+	"github.com/emrebicer/sudoku-solver/util"
 )
 
 func Loop(newBoard [9][9]int) {
@@ -24,7 +27,8 @@ func Loop(newBoard [9][9]int) {
 		os.Stdin.Read(b)
 		input, err := strconv.Atoi(string(b))
 		if err != nil {
-			fmt.Printf(err.Error())
+			fmt.Printf("failed to parse the input with the error: %s, please only use number between 0-9...", err.Error())
+			break
 		}
 
 		if input == 0 {
@@ -34,7 +38,7 @@ func Loop(newBoard [9][9]int) {
 			for i := 0; i < 50; i++ {
 				fmt.Println()
 			}
-			PrintBoard(newBoard, input)
+			util.PrintBoard(newBoard, input)
 		} else {
 			fmt.Printf("Invalid input.\n")
 		}

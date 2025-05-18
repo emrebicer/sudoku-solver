@@ -1,9 +1,12 @@
+//go:build !linux
 // +build !linux
 
-package sudoku
+package display
 
 import (
 	"fmt"
+
+	"github.com/emrebicer/sudoku-solver/util"
 )
 
 func Loop(newBoard [9][9]int) {
@@ -25,9 +28,9 @@ func Loop(newBoard [9][9]int) {
 			for i := 0; i < 50; i++ {
 				fmt.Println()
 			}
-			PrintBoard(newBoard, input)
+			util.PrintBoard(newBoard, input)
 		} else {
-			fmt.Printf("Invalid input.\n")
+			fmt.Println("Invalid input, please only use number from 0 to 9")
 		}
 
 	}

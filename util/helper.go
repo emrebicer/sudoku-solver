@@ -1,4 +1,4 @@
-package sudoku
+package util
 
 import (
 	"fmt"
@@ -8,84 +8,6 @@ import (
 
 	"github.com/fatih/color"
 )
-
-const emptyCell = 0
-
-func SolveBoard(board [9][9]int) ([9][9]int, bool) {
-
-	// Find next empty cell
-	for i := 0; i < len(board); i++ {
-		for j := 0; j < len(board[0]); j++ {
-			if board[i][j] == emptyCell {
-				validFlag := false
-				for k := 1; k < 10; k++ {
-					board[i][j] = k
-					cellValid := isCellValid(board, i, j)
-					if cellValid {
-						newBoard, boardValid := SolveBoard(board)
-						if boardValid {
-							validFlag = true
-							board = newBoard
-							break
-						}
-					}
-				}
-
-				if !validFlag {
-					return board, false
-				}
-
-			}
-		}
-	}
-	return board, true
-}
-
-func isCellValid(board [9][9]int, rowIndex int, columnIndex int) bool {
-
-	cellNumber := board[rowIndex][columnIndex]
-	// Check if the row consists of the same number
-	foundAtRowCounter := 0
-	for i := 0; i < len(board[rowIndex]); i++ {
-		if board[rowIndex][i] == cellNumber {
-			foundAtRowCounter++
-		}
-	}
-
-	if foundAtRowCounter > 1 {
-		return false
-	}
-
-	// Check if the column consists of the same number
-	foundAtColumnCounter := 0
-	for i := 0; i < len(board); i++ {
-		if board[i][columnIndex] == cellNumber {
-			foundAtColumnCounter++
-		}
-	}
-
-	if foundAtColumnCounter > 1 {
-		return false
-	}
-
-	// Check if the current big square consist of the same number
-	startRow := rowIndex - rowIndex%3
-	startCol := columnIndex - columnIndex%3
-	foundAtBigSquare := 0
-	for i := 0; i < 3; i++ {
-		for j := 0; j < 3; j++ {
-			if board[i+startRow][j+startCol] == cellNumber {
-				foundAtBigSquare++
-			}
-		}
-	}
-
-	if foundAtBigSquare > 1 {
-		return false
-	}
-
-	return true
-}
 
 func ReadSudokuFromFile(filename string) ([9][9]int, error) {
 
@@ -110,6 +32,14 @@ func ReadSudokuFromFile(filename string) ([9][9]int, error) {
 	}
 
 	return board, nil
+}
+
+func CopyBoard(dst *[9][9]int, src *[9][9]int) {
+	for i := 0; i < 9; i++ {
+		for j := 0; j < 9; j++ {
+			dst[i][j] = src[i][j]
+		}
+	}
 }
 
 func PrintBoard(board [9][9]int, highlight_number int) {
