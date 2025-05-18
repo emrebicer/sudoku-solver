@@ -13,17 +13,26 @@ import (
 
 func main() {
 	router := gin.Default()
+
+	// Serve static files from the frontend directory
+	router.Static("/static", "./frontend")
+
+	// Serve the index.html file at the root endpoint
+	router.GET("/", func(c *gin.Context) {
+		c.File("./frontend/index.html")
+	})
+
 	router.GET("/solve", func(c *gin.Context) {
 		boardStr := c.Request.URL.Query().Get("board")
 		res, err := solveFromString(boardStr)
 		if err != nil {
 			c.String(http.StatusInternalServerError, "failed to solve the board: %s", err)
+		} else {
+			c.String(http.StatusOK, res)
 		}
-
-		c.String(http.StatusOK, res)
 	})
 
-	router.Run("localhost:8080")
+	router.Run("0.0.0.0:8080")
 }
 
 func solveFromString(boardStr string) (string, error) {

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sudoku Solver</title>
+	<!-- Import Pico CSS from a CDN -->
+	<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+	<link rel="stylesheet" href="/static/index.css">
+</head>
+
+<body>
+	<main class="container">
+		<h1>Sudoku Solver</h1>
+		<div class="sudoku-grid" id="sudokuGrid">
+			<!-- Generate 81 input fields for the Sudoku grid -->
+		</div>
+
+		<div style="margin-bottom: 36px"> </div>
+
+		<button class="" onclick="solveSudoku()">Solve!</button>
+		<button class="secondary" onclick="clearSudokuBoard()">Clear the sudoku board</button>
+	</main>
+
+	<!-- Import your custom JavaScript file -->
+	<script src="/static/index.js"></script>
+</body>
+
+</html>
