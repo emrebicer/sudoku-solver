@@ -11,7 +11,7 @@ for (let i = 0; i < 81; i++) {
 		this.style.color = 'white';
 	});
 
-	let borderProperty = '4px solid #D24317';
+	let borderProperty = '2px solid #D24317';
 
 	// Add thicker borders
 	if (i < 9) {
